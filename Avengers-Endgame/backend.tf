@@ -5,7 +5,7 @@ terraform {
     bucket  = "avengerrrsss-endgameee"
     key     = "Avengers-Endgame.tfstate"
     region  = "us-east-1"
-    profile = "default"
+    #profile = "default"
   }
 }
 

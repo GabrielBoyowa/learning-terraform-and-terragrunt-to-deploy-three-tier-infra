@@ -3,7 +3,7 @@
 
 provider "aws" {
   region  = var.provider_region
-  profile = "default"
+  #profile = "default"
 }
 
 module "vpc" {
