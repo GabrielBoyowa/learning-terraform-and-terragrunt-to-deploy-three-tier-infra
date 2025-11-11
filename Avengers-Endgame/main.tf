@@ -1,4 +1,5 @@
-#Endgame main file containing resources referenced from company module
+#Endgame main file containing resources referenced from company module 
+#This module also use GitHub Actions to deploy to AWS
 
 provider "aws" {
   region  = var.provider_region
