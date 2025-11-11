@@ -1,0 +1,37 @@
+name: "Terraform Destroy"
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+permissions:
+  id-token: write   # Required for OIDC
+  contents: read   # Required for checkout
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Avengers-Endgame
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::188735152537:role/GitHub-Actions
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+
