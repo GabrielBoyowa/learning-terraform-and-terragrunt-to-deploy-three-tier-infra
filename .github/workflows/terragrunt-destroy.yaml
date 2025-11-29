@@ -1,0 +1,86 @@
+
+name: "Terragrunt Destroy"
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+permissions:
+  id-token: write     # Required for OIDC
+  contents: read      # Required for checkout
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Avengers-Endgame
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::188735152537:role/GitHub-Actions
+          aws-region: us-east-1
+
+      - name: Install Terragrunt
+        run: |
+          TG_VERSION="0.67.4"
+          curl -L https://github.com/gruntwork-io/terragrunt/releases/download/v${TG_VERSION}/terragrunt_linux_amd64 \
+            -o terragrunt
+          chmod +x terragrunt
+          sudo mv terragrunt /usr/local/bin/terragrunt
+
+      - name: Terragrunt Init
+        run: terragrunt init
+
+      - name: Terragrunt Destroy
+        run: terragrunt destroy --auto-approve
+
+
+
+
+
+
+
+
+
+#name: "Terraform Destroy"
+
+#on:
+  #workflow_dispatch:  # Manual trigger only
+
+#permissions:
+ # id-token: write   # Required for OIDC
+ # contents: read   # Required for checkout
+
+#jobs:
+  #destroy:
+   # runs-on: ubuntu-latest
+   # defaults:
+    #  run:
+    #    working-directory: Avengers-Endgame
+
+   # steps:
+   #   - name: Checkout repository
+    #    uses: actions/checkout@v4
+
+  #    - name: Configure AWS credentials
+   #     uses: aws-actions/configure-aws-credentials@v4
+    #    with:
+    #      role-to-assume: arn:aws:iam::188735152537:role/GitHub-Actions
+     #     aws-region: us-east-1
+
+ #     - name: Setup Terraform
+ #       uses: hashicorp/setup-terraform@v1
+  #      with:
+  #        terraform_wrapper: false
+
+#      - name: Terraform Init
+#        run: terraform init
+
+ #     - name: Terraform Destroy
+#        run: terraform destroy -auto-approve
+
