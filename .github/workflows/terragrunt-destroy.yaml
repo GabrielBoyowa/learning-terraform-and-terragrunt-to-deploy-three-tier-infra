@@ -46,7 +46,8 @@ jobs:
         run: terragrunt init
 
       - name: Terragrunt Destroy
-        run: terragrunt destroy --auto-approve
+        run: terragrunt destroy --auto-approve --terragrunt-ignore-dependency-errors
+
 
 
 
