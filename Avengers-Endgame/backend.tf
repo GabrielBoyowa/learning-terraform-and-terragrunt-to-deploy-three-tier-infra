@@ -2,9 +2,9 @@
 
 terraform {
   backend "s3" {
-    bucket  = "avengerrrsss-endgameee"
-    key     = "Avengers-Endgame.tfstate"
-    region  = "us-east-1"
+    bucket = "avengerrrsss-endgameee"
+    key    = "Avengers-Endgame.tfstate"
+    region = "us-east-1"
     #profile = "default"
   }
 }

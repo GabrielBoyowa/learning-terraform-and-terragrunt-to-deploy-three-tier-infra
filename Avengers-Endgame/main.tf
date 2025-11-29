@@ -2,7 +2,7 @@
 #This module also use GitHub Actions to deploy to AWS
 
 provider "aws" {
-  region  = var.provider_region
+  region = var.provider_region
   #profile = "default"
 }
 
@@ -45,4 +45,11 @@ module "EC2" {
   key_name                     = var.key_name
   web_server_security_group_id = module.SECURITY-GROUP.web_server_security_group_id
   user_data                    = file(var.user_data)
+}
+
+
+module "S3" {
+  source         = "../Modules/S3"
+  project_name   = module.vpc.project_name
+  s3_bucket_name = var.s3_bucket_name
 }

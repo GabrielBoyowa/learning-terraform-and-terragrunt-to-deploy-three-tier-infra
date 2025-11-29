@@ -14,3 +14,4 @@ variable "instance_type" {}
 variable "user_data" {
   default = "wakanda.sh"
 }
+variable "s3_bucket_name" {}
