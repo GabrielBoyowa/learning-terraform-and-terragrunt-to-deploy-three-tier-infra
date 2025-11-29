@@ -28,6 +28,16 @@ jobs:
           role-to-assume: arn:aws:iam::188735152537:role/GitHub-Actions
           aws-region: us-east-1
 
+
+
+ # Install Terraform (required for Terragrunt)
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false   
+
+
+ # Install Terragrunt
       - name: Install Terragrunt
         run: |
           TG_VERSION="0.67.4"
