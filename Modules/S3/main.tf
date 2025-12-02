@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "s3-bucket" {
 #FEATURES
 
 resource "aws_s3_bucket_versioning" "versioned_bucket" {
-  bucket = aws_s3_bucket.s3-bucket.arn
+  bucket = aws_s3_bucket.s3-bucket.id
   versioning_configuration {
     status = "Enabled"
   }
