@@ -1,21 +1,59 @@
 
-#This is the block of code for creating an S3 Bucket
+#This is the block of code for creating TWO S3 Buckets
 
-resource "aws_s3_bucket" "s3-bucket" {
-  bucket =  var.s3_bucket_name
+resource "aws_s3_bucket" "s3-bucket-1" {
+  bucket =  "${var.s3_bucket_name}-1" 
 
-  tags = {
-    Name = "${var.project_name}-s3-bucket"
-  }
+#   tags = {
+#     Name = "${var.project_name}-s3-bucket-1"
+#   }
+# }
+
+tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
+
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-s3-bucket-1"
+    }
+  )
 }
 
 
-#FEATURES
-
-resource "aws_s3_bucket_versioning" "versioned_bucket" {
-  bucket = aws_s3_bucket.s3-bucket.arn
+##BUCKET VERSIONING 
+resource "aws_s3_bucket_versioning" "versioned_bucket_1" {
+  bucket = aws_s3_bucket.s3-bucket-1.id
   versioning_configuration {
     status = "Enabled"
   }
 }
+
+
+
+
+
+resource "aws_s3_bucket" "s3-bucket-2" {
+  bucket =  "${var.s3_bucket_name}-2" 
+
+tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
+
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-s3-bucket-2"
+    }
+  )
+}
+
+##BUCKET VERSIONING 
+resource "aws_s3_bucket_versioning" "versioned_bucket_2" {
+  bucket = aws_s3_bucket.s3-bucket-2.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
 

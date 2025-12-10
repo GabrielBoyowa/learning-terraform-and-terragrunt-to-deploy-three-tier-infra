@@ -2,6 +2,10 @@
 
 variable "project_name" {}
 
+variable "resource_tags" {
+        type        = map(string)
+}
+
 variable "public_subnet_1_id" {}
 
 variable "public_subnet_2_id" {}

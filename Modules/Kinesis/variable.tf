@@ -1,3 +1,3 @@
-#THIS IS THE VARIABLE BLOCK
+# #THIS IS THE VARIABLE BLOCK
 
-variable "project_name" {}
+# variable "project_name" {}

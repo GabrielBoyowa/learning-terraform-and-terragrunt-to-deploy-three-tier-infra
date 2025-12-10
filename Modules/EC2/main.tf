@@ -25,12 +25,17 @@ resource "aws_instance" "Web-1" {
   security_groups             = [var.web_server_security_group_id]
   user_data                   = var.user_data
 
-  tags = {
-    Name = "${var.project_name}-Web-Server-1"
 
-  }
+tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
+
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-Web-Server-1"
+    }
+  )
 }
-
 resource "aws_instance" "Web-2" {
   ami                         = data.aws_ami.web_ami.id
   instance_type               = var.instance_type
@@ -41,8 +46,13 @@ resource "aws_instance" "Web-2" {
   security_groups             = [var.web_server_security_group_id]
   user_data                   = var.user_data
 
-  tags = {
-    Name = "${var.project_name}-Web-Server-2"
+tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
 
-  }
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-Web-Server-2"
+    }
+  )
 }

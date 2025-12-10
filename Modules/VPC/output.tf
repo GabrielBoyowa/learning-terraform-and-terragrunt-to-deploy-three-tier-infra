@@ -6,6 +6,10 @@ output "provider_region" {
 output "project_name" {
   value = var.project_name
 }
+
+output "resource_tags" {
+  value = var.resource_tags
+}
 output "vpc_id" {
   value = aws_vpc.vpc.id
 }

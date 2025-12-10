@@ -7,12 +7,17 @@ resource "aws_lb" "alb" {
   security_groups    = [var.alb_security_group_id]
   subnets            = [var.public_subnet_1_id, var.public_subnet_2_id]
 
-  tags = {
-    Name = "${var.project_name}-ALB"
 
-  }
+tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
+
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-ALB"
+    }
+  )
 }
-
 resource "aws_lb_listener" "alb_http_listener" {
   load_balancer_arn = aws_lb.alb.arn
   port              = 80

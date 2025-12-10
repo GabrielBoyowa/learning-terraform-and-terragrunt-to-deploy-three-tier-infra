@@ -10,6 +10,7 @@ module "vpc" {
   source                         = "../Modules/VPC"
   provider_region                = var.provider_region
   project_name                   = var.project_name
+  resource_tags                  = var.resource_tags
   vpc_cidr_block                 = var.vpc_cidr_block
   public_subnet_1_cidr_block     = var.public_subnet_1_cidr_block
   public_subnet_2_cidr_block     = var.public_subnet_2_cidr_block
@@ -22,6 +23,7 @@ module "vpc" {
 module "ALB" {
   source                = "../Modules/ALB"
   project_name          = module.vpc.project_name
+  resource_tags         = module.vpc.resource_tags
   alb_security_group_id = module.SECURITY-GROUP.alb_security_group_id
   public_subnet_1_id    = module.vpc.public_subnet_1_id
   public_subnet_2_id    = module.vpc.public_subnet_2_id
@@ -39,6 +41,7 @@ module "SECURITY-GROUP" {
 module "EC2" {
   source                       = "../Modules/EC2"
   project_name                 = module.vpc.project_name
+  resource_tags                = module.vpc.resource_tags
   public_subnet_1_id           = module.vpc.public_subnet_1_id
   public_subnet_2_id           = module.vpc.public_subnet_2_id
   instance_type                = var.instance_type
@@ -51,5 +54,6 @@ module "EC2" {
 module "S3" {
   source         = "../Modules/S3"
   project_name   = module.vpc.project_name
+  resource_tags  = module.vpc.resource_tags
   s3_bucket_name = var.s3_bucket_name
 }

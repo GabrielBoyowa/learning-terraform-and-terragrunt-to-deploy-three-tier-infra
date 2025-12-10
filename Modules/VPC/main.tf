@@ -6,10 +6,16 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags = {
-    Name = "${var.project_name}-vpc"
-  }
 
+tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
+
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-vpc"
+    }
+  )
 }
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
