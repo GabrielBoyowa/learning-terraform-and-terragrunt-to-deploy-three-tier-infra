@@ -2,14 +2,12 @@
 #This is the block of code for creating TWO S3 Buckets
 
 resource "aws_s3_bucket" "s3-bucket-1" {
-  bucket =  "${var.s3_bucket_name}-1" 
+  bucket = "${var.s3_bucket_name}-1"
+  force_destroy = true
 
-#   tags = {
-#     Name = "${var.project_name}-s3-bucket-1"
-#   }
-# }
 
-tags = merge(
+
+  tags = merge(
     # 1. The map of common tags from your variable
     var.resource_tags,
 
@@ -34,9 +32,10 @@ resource "aws_s3_bucket_versioning" "versioned_bucket_1" {
 
 
 resource "aws_s3_bucket" "s3-bucket-2" {
-  bucket =  "${var.s3_bucket_name}-2" 
+  bucket = "${var.s3_bucket_name}-2"
+  force_destroy = true
 
-tags = merge(
+  tags = merge(
     # 1. The map of common tags from your variable
     var.resource_tags,
 
