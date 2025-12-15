@@ -14,6 +14,7 @@ resource_tags = {
   Team        = "Avengers"
   Contact     = "erewaboyowa2018@gmail.com"
 }
+
 vpc_cidr_block = "10.0.0.0/16"
 
 public_subnet_1_cidr_block = "10.0.0.0/24"

@@ -1,10 +1,14 @@
-#This is the variable file for my company module 
+
+#---------------------------------------------------------------
+#This is the variable file for my module 
+#---------------------------------------------------------------
 
 variable "provider_region" {}
 
 variable "project_name" {}
 
 variable "vpc_flow_logs_bucket" {}
+
 variable "resource_tags" {
   type = map(string)
 }

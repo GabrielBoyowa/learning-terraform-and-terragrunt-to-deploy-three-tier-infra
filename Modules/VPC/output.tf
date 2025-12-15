@@ -1,4 +1,7 @@
-#This is the output file for my company module
+
+#---------------------------------------------------------------
+#This is the output file for my module
+#---------------------------------------------------------------
 
 output "provider_region" {
   value = var.provider_region

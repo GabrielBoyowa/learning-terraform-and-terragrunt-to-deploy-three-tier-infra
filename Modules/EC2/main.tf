@@ -1,4 +1,7 @@
-#This is the block of code for two instances and data base
+
+#---------------------------------------------------------------
+#This is the block of code for two instances 
+#---------------------------------------------------------------
 
 data "aws_ami" "web_ami" {
   most_recent = true
@@ -12,8 +15,9 @@ data "aws_ami" "web_ami" {
 
 data "aws_availability_zones" "availability_zones" {}
 
-
-
+#---------------------------------------------------------------
+# WEBSERVERS
+#---------------------------------------------------------------
 
 resource "aws_instance" "Web-1" {
   ami                         = data.aws_ami.web_ami.id

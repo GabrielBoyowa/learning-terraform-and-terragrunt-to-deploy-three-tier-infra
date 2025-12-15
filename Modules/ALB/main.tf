@@ -31,6 +31,10 @@ resource "aws_lb_listener" "alb_http_listener" {
   }
 }
 
+
+#---------------------------------------------------------------
+# TARGET GROUP
+#---------------------------------------------------------------
 resource "aws_lb_target_group" "alb_target_group" {
   name     = "${var.project_name}-ALB-TG"
   port     = 80
