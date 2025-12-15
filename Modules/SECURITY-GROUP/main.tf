@@ -1,5 +1,7 @@
-#This is the resource block for security group for my company module
 
+#---------------------------------------------------------------
+#This is the resource block for security group for my module
+#---------------------------------------------------------------
 resource "aws_security_group" "alb_security_group" {
   name        = "ALB-SG"
   description = "Allow specified traffic from internet"

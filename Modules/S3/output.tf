@@ -1,4 +1,4 @@
-#This is the output file for my company s3 bucket module
+#This is the output file for my s3 bucket module
 
 output "s3_bucket_1_arn" {
   value = aws_s3_bucket.s3-bucket-1.arn
@@ -11,3 +11,4 @@ output "s3_bucket_2_arn" {
 output "resource_tags" {
   value = var.resource_tags
 }
+

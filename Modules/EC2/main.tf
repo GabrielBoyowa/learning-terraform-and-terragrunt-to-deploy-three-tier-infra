@@ -26,7 +26,7 @@ resource "aws_instance" "Web-1" {
   user_data                   = var.user_data
 
 
-tags = merge(
+  tags = merge(
     # 1. The map of common tags from your variable
     var.resource_tags,
 
@@ -46,7 +46,7 @@ resource "aws_instance" "Web-2" {
   security_groups             = [var.web_server_security_group_id]
   user_data                   = var.user_data
 
-tags = merge(
+  tags = merge(
     # 1. The map of common tags from your variable
     var.resource_tags,
 

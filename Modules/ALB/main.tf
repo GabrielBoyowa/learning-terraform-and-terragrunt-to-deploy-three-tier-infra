@@ -1,5 +1,7 @@
-#This is the resouce block for load balancer for my company module
 
+#---------------------------------------------------------------
+#This is the resouce block for load balancer for my company module
+#---------------------------------------------------------------
 resource "aws_lb" "alb" {
   name               = "${var.project_name}-ALB"
   internal           = false
@@ -8,7 +10,7 @@ resource "aws_lb" "alb" {
   subnets            = [var.public_subnet_1_id, var.public_subnet_2_id]
 
 
-tags = merge(
+  tags = merge(
     # 1. The map of common tags from your variable
     var.resource_tags,
 
@@ -35,6 +37,7 @@ resource "aws_lb_target_group" "alb_target_group" {
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 
+
   health_check {
     enabled             = true
     interval            = 30
@@ -45,12 +48,24 @@ resource "aws_lb_target_group" "alb_target_group" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
   }
+
+  tags = merge(
+    # 1. The map of common tags from your variable
+    var.resource_tags,
+
+    # 2. Your specific, hardcoded, or dynamic tags
+    {
+      Name = "${var.project_name}-ALB"
+    }
+  )
 }
+
 
 resource "aws_lb_target_group_attachment" "attach-Web-1" {
   target_group_arn = aws_lb_target_group.alb_target_group.arn
   target_id        = var.aws_instance_id1
 }
+
 resource "aws_lb_target_group_attachment" "attach-Web-2" {
   target_group_arn = aws_lb_target_group.alb_target_group.arn
   target_id        = var.aws_instance_id2

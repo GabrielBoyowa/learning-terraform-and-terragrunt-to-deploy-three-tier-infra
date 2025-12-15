@@ -3,9 +3,12 @@
 variable "provider_region" {}
 
 variable "project_name" {}
+
+variable "vpc_flow_logs_bucket" {}
 variable "resource_tags" {
-      type        = map(string)
+  type = map(string)
 }
+
 variable "vpc_cidr_block" {}
 
 variable "public_subnet_1_cidr_block" {}

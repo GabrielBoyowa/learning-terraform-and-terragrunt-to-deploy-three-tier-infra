@@ -2,7 +2,7 @@
 #This module also use GitHub Actions to deploy to AWS
 
 provider "aws" {
-  region = var.provider_region
+  region  = var.provider_region
   profile = "default"
 }
 
@@ -10,6 +10,7 @@ module "vpc" {
   source                         = "../Modules/VPC"
   provider_region                = var.provider_region
   project_name                   = var.project_name
+  vpc_flow_logs_bucket           = var.vpc_flow_logs_bucket
   resource_tags                  = var.resource_tags
   vpc_cidr_block                 = var.vpc_cidr_block
   public_subnet_1_cidr_block     = var.public_subnet_1_cidr_block
@@ -23,6 +24,9 @@ module "vpc" {
 module "ALB" {
   source                = "../Modules/ALB"
   project_name          = module.vpc.project_name
+  provider_region       = var.provider_region
+  waf_logs_bucket       = var.waf_logs_bucket
+  s3_bucket_1_arn       = module.S3.s3_bucket_1_arn
   resource_tags         = module.vpc.resource_tags
   alb_security_group_id = module.SECURITY-GROUP.alb_security_group_id
   public_subnet_1_id    = module.vpc.public_subnet_1_id

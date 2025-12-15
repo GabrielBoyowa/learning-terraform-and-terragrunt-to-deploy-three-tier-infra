@@ -1,6 +1,7 @@
 
-
+#---------------------------------------------------------------
 # IAM Role for Replication
+#---------------------------------------------------------------
 resource "aws_iam_role" "replication_role" {
   name = "s3-replication-role"
 
@@ -14,7 +15,9 @@ resource "aws_iam_role" "replication_role" {
   })
 }
 
+#---------------------------------------------------------------
 # IAM Policy for Replication
+#---------------------------------------------------------------
 resource "aws_iam_policy" "replication_policy" {
   name        = "s3-replication-policy"
   description = "Allows S3 replication between primary and secondary buckets"
@@ -36,16 +39,21 @@ resource "aws_iam_policy" "replication_policy" {
   })
 }
 
+#---------------------------------------------------------------
 # Attach Policy to Role
+#---------------------------------------------------------------
 resource "aws_iam_role_policy_attachment" "replication_policy_attach" {
   role       = aws_iam_role.replication_role.name
   policy_arn = aws_iam_policy.replication_policy.arn
 }
 
+
+#---------------------------------------------------------------
 # S3 Replication Configuration
+#---------------------------------------------------------------
 resource "aws_s3_bucket_replication_configuration" "replication" {
-  bucket   = aws_s3_bucket.s3-bucket-1.id
-  role     = aws_iam_role.replication_role.arn
+  bucket = aws_s3_bucket.s3-bucket-1.id
+  role   = aws_iam_role.replication_role.arn
 
   rule {
     id     = "same-region-replication"

@@ -3,6 +3,8 @@
 provider_region = "us-east-1"
 
 project_name = "Thanos"
+
+vpc_flow_logs_bucket = "captain-marvel-vpc-flow-logs-bucket-north-virginia"
 resource_tags = {
   Environment = "Dev"
   ManagedBy   = "Terraform"
@@ -33,3 +35,5 @@ instance_type = "t2.micro"
 user_data = "wakanda.sh"
 
 s3_bucket_name = "soul-stone-s3-bucket"
+
+waf_logs_bucket = "aws-waf-logs-unique-black-widow-bucket"

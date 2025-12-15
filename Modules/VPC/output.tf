@@ -7,6 +7,10 @@ output "project_name" {
   value = var.project_name
 }
 
+output "vpc_flow_logs_bucket" {
+  value = var.vpc_flow_logs_bucket
+}
+
 output "resource_tags" {
   value = var.resource_tags
 }

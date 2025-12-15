@@ -7,7 +7,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_support   = true
 
 
-tags = merge(
+  tags = merge(
     # 1. The map of common tags from your variable
     var.resource_tags,
 
