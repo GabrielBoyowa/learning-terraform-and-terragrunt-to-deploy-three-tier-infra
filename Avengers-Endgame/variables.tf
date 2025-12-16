@@ -36,3 +36,7 @@ variable "s3_bucket_name" {}
 
 variable "waf_logs_bucket" {}
 
+variable "dns_query_logs_bucket" {}
+
+variable "dns_resolver_query_log_name" {}
+

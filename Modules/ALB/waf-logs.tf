@@ -1,7 +1,7 @@
 
-#----------------------------------
+#------------------------------------------------------------------------------------
 #THIS FILE IS FOR CONFIGURING THE LOAD BALANCER WAF LOGS TO VARIOUS DESTINATION
-#----------------------------------
+#------------------------------------------------------------------------------------
 
 
 resource "aws_s3_bucket" "waf_logs_bucket" {
@@ -19,7 +19,9 @@ resource "aws_s3_bucket" "waf_logs_bucket" {
   )
 }
 
-# 2. Add the required bucket policy for WAF log delivery
+#------------------------------------------------------------------------------------
+#  Add the required bucket policy for WAF log delivery
+#------------------------------------------------------------------------------------
 data "aws_iam_policy_document" "waf_logs_bucket_policy" {
   statement {
     effect = "Allow"

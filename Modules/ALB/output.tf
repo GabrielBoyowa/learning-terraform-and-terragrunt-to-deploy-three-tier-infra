@@ -1,4 +1,7 @@
+
+#-----------------------------------------------
 #This is the output block for my company module
+#-----------------------------------------------
 
 
 output "alb_target_group_arn" {

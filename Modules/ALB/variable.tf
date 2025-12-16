@@ -1,4 +1,7 @@
-#This is the variable block for my company module
+
+#--------------------------------------------------
+#This is the variable block for my module
+#--------------------------------------------------
 
 variable "project_name" {}
 
@@ -8,6 +11,7 @@ variable "waf_logs_bucket" {}
 variable "resource_tags" {
   type = map(string)
 }
+
 variable "alb_security_group_id" {}
 
 variable "public_subnet_1_id" {}

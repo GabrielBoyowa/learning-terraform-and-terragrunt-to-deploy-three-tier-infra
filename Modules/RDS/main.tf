@@ -30,11 +30,17 @@
 #   publicly_accessible = true
 #   skip_final_snapshot  = true
 
+#   tags = merge(
+#     # 1. The map of common tags from your variable
+#     var.resource_tags,
 
-#   tags = {
-#     Name = "${var.project_name}-vibranium-rds"
-#   }
+#     # 2. Your specific, hardcoded, or dynamic tags
+#     {
+#       Name = "${var.project_name}-vibranium-rds"
+#     }
+#   )
 # }
+
 
 
 

@@ -38,3 +38,8 @@ user_data = "wakanda.sh"
 s3_bucket_name = "soul-stone-s3-bucket"
 
 waf_logs_bucket = "aws-waf-logs-unique-black-widow-bucket"
+
+
+dns_query_logs_bucket = "aws-route53-dns-resolver-query-bucket-valkyrie-north-virginia"
+
+dns_resolver_query_log_name = "gabriel-boyowa-click-resolver-query-log"
