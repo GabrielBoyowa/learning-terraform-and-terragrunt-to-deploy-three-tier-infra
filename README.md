@@ -7,3 +7,41 @@
   <img height="32" src="https://img.shields.io/badge/Cloud-AWS-FF9900" />
   <img height="32" src="https://img.shields.io/badge/Focus-Cloud%20Security-D13212" />
 </p>
+
+
+
+
+<!-- Professional identity & credibility badges -->
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&label=Profile%20Views&color=0A66C2&style=flat" />
+  <img src="https://img.shields.io/badge/Role-Security%20Architect-4B0082" />
+  <img src="https://img.shields.io/badge/Focus-DevSecOps-B22222" />
+  <img src="https://img.shields.io/badge/Cloud-AWS-FF9900" />
+  <img src="https://img.shields.io/badge/Specialty-Cloud%20Security-D13212" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Practice-Infrastructure%20as%20Code-0A66C2" />
+  <img src="https://img.shields.io/badge/Concept-Zero%20Trust-2F4F4F" />
+  <img src="https://img.shields.io/badge/Concept-CSPM-1D8102" />
+  <img src="https://img.shields.io/badge/Concept-IAM-003366" />
+</p>
+
+
+
+<p align="center">
+  <img 
+    src="https://readme-typing-svg.demolab.com?
+    font=Fira+Code&
+    size=20&
+    pause=1000&
+    color=0A66C2&
+    center=true&
+    vCenter=true&
+    width=550&
+    lines=Security+Architect;
+    Cloud+%26+DevSecOps+Engineer;
+    Infrastructure+as+Code+Advocate"
+  />
+</p>
+
