@@ -9,6 +9,18 @@ resource "aws_lb" "alb" {
   security_groups    = [var.alb_security_group_id]
   subnets            = [var.public_subnet_1_id, var.public_subnet_2_id]
 
+  # ------------------------------
+  # ENABLE ACCESS LOGS FOR LOAD BALANCER HERE
+  # ------------------------------
+  access_logs {
+    enabled = true
+    bucket  = aws_s3_bucket.alb_log_bucket.id
+
+  }
+
+  depends_on = [
+    aws_s3_bucket_policy.alb-log-bucket-policy
+  ]
 
   tags = merge(
     # 1. The map of common tags from your variable
@@ -20,6 +32,11 @@ resource "aws_lb" "alb" {
     }
   )
 }
+
+
+#---------------------------------------
+# LISTENER CONFIGURATION
+#---------------------------------------
 resource "aws_lb_listener" "alb_http_listener" {
   load_balancer_arn = aws_lb.alb.arn
   port              = 80
@@ -59,7 +76,7 @@ resource "aws_lb_target_group" "alb_target_group" {
 
     # 2. Your specific, hardcoded, or dynamic tags
     {
-      Name = "${var.project_name}-ALB"
+      Name = "${var.project_name}-target-group-for-alb"
     }
   )
 }

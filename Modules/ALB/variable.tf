@@ -26,4 +26,8 @@ variable "aws_instance_id2" {}
 
 variable "s3_bucket_1_arn" {}
 
+variable "alb_log_bucket" {}
+
+
+
 

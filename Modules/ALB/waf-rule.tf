@@ -21,7 +21,9 @@ resource "aws_wafv2_web_acl" "scarlet-witch-WAF" {
     priority = 1
 
     override_action {
-      count {} # Use block {} if you want to actively block
+      count {} # Observe only, no blocking
+      # block {} # If you want to actively block
+      # none {} # Actually enforces the rule
     }
 
     statement {

@@ -40,3 +40,10 @@ variable "dns_query_logs_bucket" {}
 
 variable "dns_resolver_query_log_name" {}
 
+variable "alb_log_bucket" {}
+
+variable "aws-waf-logs-CDN-bucket-DESTINATION" {}
+
+variable "cloud_front_origin_bucket" {}
+
+# variable "kinesis_stream_name" {}

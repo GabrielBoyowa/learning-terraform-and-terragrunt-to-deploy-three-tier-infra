@@ -12,6 +12,14 @@ output "waf_logs_bucket" {
   value = aws_s3_bucket.waf_logs_bucket.arn
 }
 
+output "alb_log_bucket" {
+  value = aws_s3_bucket.alb_log_bucket.arn
+}
+
+output "alb_log_bucket_arn" {
+  value = aws_s3_bucket.alb_log_bucket.arn
+}
+
 output "application_load_balancer_dns_name" {
   value = aws_lb.alb.dns_name
 }

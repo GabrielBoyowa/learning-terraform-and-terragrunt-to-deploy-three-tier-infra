@@ -1,30 +1,59 @@
-# #THIS RESOURCE BLOCK IS FOR CREATING KINESIS FIREHOSE
+# #-----------------------------
+# # IAM Role for Kinesis Firehose
+# #-----------------------------
+# resource "aws_iam_role" "kinesis_firehose" {
+#   name = "${var.project_name}-firehose-role"
+
+#   assume_role_policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Effect = "Allow"
+#         Principal = {
+#           Service = "firehose.amazonaws.com"
+#         }
+#         Action = "sts:AssumeRole"
+#       }
+#     ]
+#   })
+# }
+
+# resource "aws_iam_role_policy" "firehose_policy" {
+#   name = "${var.project_name}-firehose-policy"
+#   role = aws_iam_role.kinesis_firehose.id
+
+#   policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Effect = "Allow"
+#         Action = [
+#           "s3:PutObject",
+#           "s3:GetBucketLocation"
+#         ]
+#         Resource = "${var.alb_log_bucket_arn}/*"
+#       }
+#     ]
+#   })
+# }
 
 
-# resource "aws_kinesis_firehose_delivery_stream" "demo_delivery_stream" {
+# # Kinesis Firehose Delivery Stream
+# resource "aws_kinesis_firehose_delivery_stream" "hulk_delivery_stream" {
 #   name        = var.kinesis_stream_name
 #   destination = "extended_s3"
 
 #   extended_s3_configuration {
-#     role_arn   = aws_iam_role.firehose.arn
-#     bucket_arn = aws_s3_bucket.demo_bucket.arn
-
-#     buffer_size = 5
-#     buffer_interval = 60
-
-#     cloudwatch_logging_options {
-#       enabled = "true"
-#       log_group_name = aws_cloudwatch_log_group.demo_firebose_log_group.name
-#       log_stream_name = aws_cloudwatch_log_stream.demo_firebose_log_stream.name
+#     role_arn   = aws_iam_role.kinesis_firehose.arn
+#     bucket_arn = var.alb_log_bucket_arn
+#     # buffer options go under the nested configuration block
+#     buffering_interval = 60
+#     buffering_size     = 5
+#   }
+#   tags = merge(
+#     var.resource_tags,
+#     {
+#       Name = "${var.project_name}-hulk-kinesis-firehose-virginia"
 #     }
-#   }
-
-#   kinesis_source_configuration {
-#     kinesis_stream_arn  = aws_kinesis_stream.demo_stream.arn
-#     role_arn            = aws_iam_role.firehose.arn
-#   }
-
-#   tags = {
-#     Product = "Demo"
-#   }
+#   )
 # }

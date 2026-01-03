@@ -28,6 +28,7 @@ module "ALB" {
   source                = "../Modules/ALB"
   project_name          = module.vpc.project_name
   provider_region       = var.provider_region
+  alb_log_bucket        = var.alb_log_bucket
   waf_logs_bucket       = var.waf_logs_bucket
   s3_bucket_1_arn       = module.S3.s3_bucket_1_arn
   resource_tags         = module.vpc.resource_tags
@@ -74,4 +75,23 @@ module "Route-53" {
   dns_resolver_query_log_name = var.dns_resolver_query_log_name
   vpc_id                      = module.vpc.vpc_id
 }
+
+
+module "CloudFront" {
+  source                              = "../Modules/CloudFront"
+  project_name                        = module.vpc.project_name
+  resource_tags                       = module.vpc.resource_tags
+  cloud_front_origin_bucket           = var.cloud_front_origin_bucket
+  aws-waf-logs-CDN-bucket-DESTINATION = var.aws-waf-logs-CDN-bucket-DESTINATION
+
+}
+
+
+# module "Kinesis" {
+#   source              = "../Modules/Kinesis"
+#   project_name        = module.vpc.project_name
+#   resource_tags       = module.vpc.resource_tags
+#   kinesis_stream_name = var.kinesis_stream_name
+#   alb_log_bucket_arn    = module.ALB.alb_log_bucket_arn
+# }
 
