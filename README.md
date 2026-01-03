@@ -31,17 +31,9 @@
 
 <p align="center">
   <img 
-    src="https://readme-typing-svg.demolab.com?
-    font=Fira+Code&
-    size=20&
-    pause=1000&
-    color=0A66C2&
-    center=true&
-    vCenter=true&
-    width=550&
-    lines=Security+Architect;
-    Cloud+%26+DevSecOps+Engineer;
-    Infrastructure+as+Code+Advocate"
+    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/devops/devops-original.svg"
+    width="120"
   />
 </p>
+
 
