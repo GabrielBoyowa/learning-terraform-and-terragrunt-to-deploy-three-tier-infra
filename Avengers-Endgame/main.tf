@@ -95,3 +95,18 @@ module "CloudFront" {
 #   alb_log_bucket_arn    = module.ALB.alb_log_bucket_arn
 # }
 
+
+# module "NLB" {
+#   source                = "../Modules/NLB"
+#   project_name          = module.vpc.project_name
+#   provider_region       = var.provider_region
+#   # alb_log_bucket        = var.alb_log_bucket
+#   # waf_logs_bucket       = var.waf_logs_bucket
+#   # s3_bucket_1_arn       = module.S3.s3_bucket_1_arn
+#   resource_tags         = module.vpc.resource_tags
+#   alb_security_group_id = module.SECURITY-GROUP.alb_security_group_id
+#   public_subnet_1_id    = module.vpc.public_subnet_1_id
+#   public_subnet_2_id    = module.vpc.public_subnet_2_id
+#   vpc_id                = module.vpc.vpc_id
+
+# }
