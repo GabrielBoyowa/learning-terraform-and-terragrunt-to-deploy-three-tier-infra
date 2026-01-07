@@ -1,6 +1,6 @@
 
 #---------------------------------------------------------------
-#This is the resouce block for load balancer for my company module
+#This is the resouce block for load balancer for module
 #---------------------------------------------------------------
 resource "aws_lb" "alb" {
   name               = "${var.project_name}-ALB"

@@ -1,6 +1,6 @@
 
 #-----------------------------------------------
-#This is the output block for my company module
+#This is the output block for module
 #-----------------------------------------------
 
 

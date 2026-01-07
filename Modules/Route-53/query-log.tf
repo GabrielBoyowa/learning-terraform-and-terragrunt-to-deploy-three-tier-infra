@@ -68,10 +68,10 @@ resource "aws_route53_resolver_query_log_config" "dns_query_logs" {
 # ASSOCIATE RESOLVER QUERY LOG WITH VPC
 #----------------------------------------------------------------
 
-resource "aws_route53_resolver_query_log_config_association" "vpc_assoc" {
-  resolver_query_log_config_id = aws_route53_resolver_query_log_config.dns_query_logs.id
-  resource_id                  = var.vpc_id
-}
+# resource "aws_route53_resolver_query_log_config_association" "vpc_assoc" {
+#   resolver_query_log_config_id = aws_route53_resolver_query_log_config.dns_query_logs.id
+#   resource_id                  = var.vpc_id
+# }
 
 
 
